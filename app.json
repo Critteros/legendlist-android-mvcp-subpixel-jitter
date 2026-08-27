@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "legendlist-yoga-precision",
+    "slug": "legendlist-yoga-precision",
+    "version": "1.0.0",
+    "ios": { "bundleIdentifier": "com.yogaprecision" },
+    "android": { "package": "com.yogaprecision" },
+    "newArchEnabled": true,
+    "plugins": [["expo-build-properties", { "android": { "buildReactNativeFromSource": true } }]]
+  }
+}

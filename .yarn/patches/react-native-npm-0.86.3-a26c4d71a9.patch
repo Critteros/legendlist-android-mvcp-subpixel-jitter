@@ -1,0 +1,24 @@
+diff --git a/ReactAndroid/src/main/java/com/facebook/react/views/scroll/MaintainVisibleScrollPositionHelper.kt b/ReactAndroid/src/main/java/com/facebook/react/views/scroll/MaintainVisibleScrollPositionHelper.kt
+index 2bee605a15c2e410b700e418d9008fa162bd6417..6c79c5a0c0cebd97425b8d83f093c3f071ffc892 100644
+--- a/ReactAndroid/src/main/java/com/facebook/react/views/scroll/MaintainVisibleScrollPositionHelper.kt
++++ b/ReactAndroid/src/main/java/com/facebook/react/views/scroll/MaintainVisibleScrollPositionHelper.kt
+@@ -98,6 +98,11 @@ internal class MaintainVisibleScrollPositionHelper<ScrollViewT>(
+         val scrollX = scrollView.scrollX
+         scrollView.scrollToPreservingMomentum(scrollX + deltaX, scrollView.scrollY)
+         this.prevFirstVisibleFrame = newFrame
++        // The scroll offset lives in this view's display list. View.scrollTo only posts an
++        // invalidate for the next frame, while the children moved by this mount already carry
++        // their new positions, so without a same-frame re-record the next frame draws the new
++        // child positions against the old offset (a one-frame jump).
++        scrollView.invalidate()
+         if (config.autoScrollToTopThreshold != null && scrollX <= config.autoScrollToTopThreshold) {
+           scrollView.reactSmoothScrollTo(0, scrollView.scrollY)
+         }
+@@ -108,6 +113,7 @@ internal class MaintainVisibleScrollPositionHelper<ScrollViewT>(
+         val scrollY = scrollView.scrollY
+         scrollView.scrollToPreservingMomentum(scrollView.scrollX, scrollY + deltaY)
+         this.prevFirstVisibleFrame = newFrame
++        scrollView.invalidate()
+         if (config.autoScrollToTopThreshold != null && scrollY <= config.autoScrollToTopThreshold) {
+           scrollView.reactSmoothScrollTo(scrollView.scrollX, 0)
+         }

@@ -1,0 +1,50 @@
+diff --git a/react-native.js b/react-native.js
+index aa3209b6e39948172fdc92d1c7c197c1cb05b451..82b5ce0b329888805eb906b9a958aa7734ef8d0e 100644
+--- a/react-native.js
++++ b/react-native.js
+@@ -1176,7 +1176,9 @@ function warnDevOnce(id, text) {
+   }
+ }
+ function roundSize(size) {
+-  return Math.floor(size * 8) / 8;
++  // Snap to the pixel grid so a prepend moves the anchor and the items by the same whole pixels.
++  const scale = PixelRatio.get();
++  return Math.floor(size * scale) / scale;
+ }
+ function isNullOrUndefined(value) {
+   return value === null || value === void 0;
+@@ -5944,7 +5946,8 @@ function getAutoOtherAxisStyle({
+ function ScrollAdjust() {
+   var _a3;
+   const ctx = useStateContext();
+-  const bias = 1e7;
++  // Yoga lays out in float32. At 1e7 the step is 1 dp, so the anchor cannot hold sub-dp adjust values.
++  const bias = 1e6;
+   const [scrollAdjust, scrollAdjustUserOffset] = useArr$(["scrollAdjust", "scrollAdjustUserOffset"]);
+   const scrollOffset = (scrollAdjust || 0) + (scrollAdjustUserOffset || 0) + bias;
+   const horizontal = !!((_a3 = ctx.state) == null ? void 0 : _a3.props.horizontal);
+diff --git a/react-native.mjs b/react-native.mjs
+index 70008dcc3ac7901f27f476d359b8217eaa6247de..d92806bf7f356c568a79343120380536fc731e4b 100644
+--- a/react-native.mjs
++++ b/react-native.mjs
+@@ -1155,7 +1155,9 @@ function warnDevOnce(id, text) {
+   }
+ }
+ function roundSize(size) {
+-  return Math.floor(size * 8) / 8;
++  // Snap to the pixel grid so a prepend moves the anchor and the items by the same whole pixels.
++  const scale = PixelRatio$1.get();
++  return Math.floor(size * scale) / scale;
+ }
+ function isNullOrUndefined(value) {
+   return value === null || value === void 0;
+@@ -5923,7 +5925,8 @@ function getAutoOtherAxisStyle({
+ function ScrollAdjust() {
+   var _a3;
+   const ctx = useStateContext();
+-  const bias = 1e7;
++  // Yoga lays out in float32. At 1e7 the step is 1 dp, so the anchor cannot hold sub-dp adjust values.
++  const bias = 1e6;
+   const [scrollAdjust, scrollAdjustUserOffset] = useArr$(["scrollAdjust", "scrollAdjustUserOffset"]);
+   const scrollOffset = (scrollAdjust || 0) + (scrollAdjustUserOffset || 0) + bias;
+   const horizontal = !!((_a3 = ctx.state) == null ? void 0 : _a3.props.horizontal);

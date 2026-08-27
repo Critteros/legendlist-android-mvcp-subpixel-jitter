@@ -1,0 +1,25 @@
+{
+  "name": "legendlist-yoga-precision",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@legendapp/list": "3.3.9",
+    "@legendapp/list-patched": "patch:@legendapp/list@npm%3A3.3.9#~/.yarn/patches/@legendapp-list-npm-3.3.9-cafe214be1.patch",
+    "expo": "~57.0.17",
+    "expo-build-properties": "~57.0.15",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "patch:react-native@npm%3A0.86.3#~/.yarn/patches/react-native-npm-0.86.3-a26c4d71a9.patch"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start --port 8090",
+    "android": "expo run:android --port 8090",
+    "ios": "expo run:ios"
+  },
+  "private": true,
+  "packageManager": "yarn@4.18.0"
+}

@@ -6,7 +6,9 @@ One item is added at the top every 300 ms. `maintainVisibleContentPosition` is o
 
 Recording: The movement is 1 to 2 px. Watch the recording at full resolution
 
-![`recordings/issue.mp4`](https://github.com/user-attachments/assets/b3808195-2604-454a-878f-efc947de8849) 
+<video src="https://github.com/user-attachments/assets/YOUR-VIDEO-ID](https://github.com/user-attachments/assets/b3808195-2604-454a-878f-efc947de8849" width="600" controls muted loop>
+</video>
+
 
 ### Root cause
 
@@ -28,8 +30,8 @@ The patch makes two changes in `react-native.js` and `react-native.mjs`. See [`.
 
 Recording (patched):
 
-
-![`recordings/fix.mp4`](https://github.com/user-attachments/assets/f9c76c9d-21b4-47e1-bf90-fdaf1db65499) 
+<video src="https://github.com/user-attachments/assets/YOUR-VIDEO-ID](https://github.com/user-attachments/assets/b3808195-2604-454a-878f-efc947de8849](https://github.com/user-attachments/assets/f9c76c9d-21b4-47e1-bf90-fdaf1db65499" width="600" controls muted loop>
+</video>
 
 ### Separate React Native issue
 
